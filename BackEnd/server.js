@@ -10,11 +10,12 @@ app.use(cors())
 app.use(express.json())
 
 const db = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'2004',
-    database:'todo'
-})
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
+});
+
 
 db.connect((err)=>{
     if(err){
@@ -114,7 +115,7 @@ app.delete('/delete', (req, res) => {
 
 
 
-
-app.listen(3000,()=>{
-    console.log('Server Started Running on port 3000');
-})
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});
