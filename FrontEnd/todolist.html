@@ -137,7 +137,7 @@
     function deleteTodo(index) {
       const ID = todos[index].ID; // get the correct ID
 
-        fetch('http://localhost:3000/delete', {
+        fetch('https://todolist-4p12.onrender.com/delete', {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ID })
