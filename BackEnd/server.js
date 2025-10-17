@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 
 const mysql = require('mysql2');
-
+require('dotenv').config();
 const app=express();
 
 app.use(cors())
@@ -16,6 +16,12 @@ const db = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
+// const db = mysql.createConnection({
+//     host:'localhost',
+//     user:'root',
+//     password:'2004',
+//     database:'todo'
+// })
 
 db.connect((err)=>{
     if(err){
@@ -119,3 +125,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
+
+
